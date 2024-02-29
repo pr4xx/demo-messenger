@@ -14,13 +14,15 @@ class ConversationResource extends JsonResource
             'id' => $this->id,
             'customer_name' => $this->customer_name,
             'messages' => [
+                // converted carbon datetime to CarbonImmutable 
+                // because Message class has a CarbonImmutable as dependency
                 Message::from([
                     'content' => 'Some message #1',
-                    'sentAt' => now()->subMinutes(5)
+                    'sentAt' => now()->subMinutes(5)->toImmutable()
                 ]),
                 Message::from([
                     'content' => 'Some message #2',
-                    'sentAt' => now()->subMinutes(3)
+                    'sentAt' => now()->subMinutes(3)->toImmutable()
                 ])
             ]
         ];

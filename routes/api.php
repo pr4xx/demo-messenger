@@ -16,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('conversations', [ConversationController::class, 'index']);
-Route::delete('conversations/{conv}', [ConversationController::class, 'destroy']);
+/*
+    Route::delete('conversations/{conv}', [ConversationController::class, 'destroy']);
+    Either, change conv --> conversation 
+    or make a change in ConversationController@destroy input by changing conversation --> conv
+*/
+Route::delete('conversations/{conversation}', [ConversationController::class, 'destroy']);
+
